@@ -11,11 +11,9 @@ on:
 
 jobs:
 
-  container-job:
+  test:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
-    # Docker Hub image that `container-job` executes in
-    container: node:20-bookworm-slim
 
     # Service containers to run with `container-job`
     services:
@@ -39,10 +37,9 @@ jobs:
           - 5432:5432
 
 
-  test:
-    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v4
